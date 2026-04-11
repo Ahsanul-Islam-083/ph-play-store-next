@@ -1,6 +1,7 @@
 import InstallToggleButton from '@/components/apps/InstallToggleButton';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import React from 'react';
 import { FaBuilding, FaDownload, FaStar } from 'react-icons/fa';
 
@@ -15,11 +16,19 @@ export async function generateMetadata({ params}){
     const {id} = await params;
     const apps = await appsPromise();
     const app = apps.find(app => app.id === Number(id));
+
+    if (!app) {
+        return{
+        title: `App Not Found | PH Play Store`,
+    }
+    }
+
     return{
         title: `${app.title} | PH Play Store`,
         description: app.description,
     }
 }    
+
 
 
 const AppDetailsPage = async ({ params }) => {
@@ -28,6 +37,9 @@ const AppDetailsPage = async ({ params }) => {
     const app = apps.find(app => app.id === Number(id));
     // console.log(id, 'params');
     // console.log(app);
+    if (!app) {
+        notFound();
+    }
     const totalRatings = app.ratings.reduce((sum,item) => sum + item.count, 0);
 
     return (
