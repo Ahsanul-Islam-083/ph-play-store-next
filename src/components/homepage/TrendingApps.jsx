@@ -1,21 +1,34 @@
-import React, { use, useEffect, useState } from "react";
+// "use client";
+// import React from "react";
 import { FaDownload, FaStar } from "react-icons/fa";
+
+import { BarLoader, HashLoader } from "react-spinners";
 import AppCard from "../ui/AppCard";
-import { HashLoader } from "react-spinners";
-import { Link } from "react-router";
-import useApps from "../../hooks/useApps";
+import Link from "next/link";
+// import useApps from "@/hooks/useApps";
 // import { useLoaderData } from "react-router";
 
 // const appsPromise = fetch("/data.json").then((res) => res.json());
+const appsPromise = async () => {
+  const res = await fetch("http://localhost:3000/data.json");
+  const data = await res.json();
+  return data;
+}
 
-const TrendingApps = () => {
+const TrendingApps = async () => {
+
+  const apps = await appsPromise();
+
   //   const apps = use(appsPromise);
   //   console.log(apps, "apps");
 
   //   const data = useLoaderData();
   //   console.log(data, "data from homepage");
 
-  const { apps, loading } = useApps();
+  // const { apps, loading } = useApps();
+
+  // console.log(loading);
+
 
   return (
     <div className="container mx-auto my-[60px]">
@@ -27,20 +40,22 @@ const TrendingApps = () => {
           reiciendis eos laborum tempore quis hic quod cupiditate, consequuntur
         </p>
       </div>
-      {loading ? (
-        <div className="flex justify-center items-center">
-          <HashLoader color="#ad46ff" />
-        </div>
-      ) : (
-        <div className="grid grid-cols-3 gap-5">
-          {apps.slice(0, 9).map((app, ind) => {
-            return <AppCard app={app} key={ind} />;
-          })}
-        </div>
-      )}
+      {/* {loading ? ( */}
+      {/* <div className="flex justify-center items-center min-h-screen"> */}
+      {/* <HashLoader color="#ad46ff" /> */}
+      {/* <BarLoader color="#ad46ff" /> */}
+      {/* <span className="loading loading-bars loading-xl text-primary"></span> */}
+      {/* </div> */}
+      {/* ) : ( */}
+      <div className="grid grid-cols-3 gap-5">
+        {apps.slice(0, 9).map((app, ind) => {
+          return <AppCard app={app} key={ind} />;
+        })}
+      </div>
+      {/* )} */}
 
       <div className="text-center mt-4">
-        <Link to={"/apps"}>
+        <Link href={"/apps"}>
           <button className="btn bg-purple-500 text-white">View All</button>
         </Link>
       </div>
