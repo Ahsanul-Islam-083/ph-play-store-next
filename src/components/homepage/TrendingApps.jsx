@@ -15,7 +15,7 @@ const appsPromise = async () => {
   return data;
 }
 
-const TrendingApps = async () => {
+const TrendingApps = async ({from}) => {
 
   const apps = await appsPromise();
 
@@ -34,7 +34,7 @@ const TrendingApps = async () => {
     <div className="container mx-auto my-[60px]">
       {/* Section header */}
       <div className="mb-8 text-center">
-        <h2 className="font-bold text-4xl">Trending apps</h2>
+        <h2 className="font-bold text-4xl">{from === "homepage" ? "Trending apps" : "All Apps"}</h2>
         <p className="text-gray-600">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus
           reiciendis eos laborum tempore quis hic quod cupiditate, consequuntur

@@ -1,3 +1,4 @@
+import TrendingApps from '@/components/homepage/TrendingApps';
 import React from 'react';
 
 export const metadata = {
@@ -9,7 +10,7 @@ const AppsPage = () => {
     return (
         <div>
             <h2>
-                Welcome to the Apps Page
+                <TrendingApps from="apps"/>
             </h2>
         </div>
     );
