@@ -1,5 +1,10 @@
 import React from 'react';
 
+export const metadata = {
+  title: "Installation Page | PH Play Store",
+  description: "This is an application management site",
+};
+
 const InstallationPage = () => {
     return (
         <div>
