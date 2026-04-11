@@ -10,6 +10,7 @@ const loading = () => {
                 {/* <span className="loading loading-bars loading-xl text-primary"></span> */}
                 Global Loading...
             </div>
+
         </div>
     );
 };

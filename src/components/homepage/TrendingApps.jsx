@@ -15,9 +15,11 @@ const appsPromise = async () => {
   return data;
 }
 
-const TrendingApps = async ({from}) => {
+const TrendingApps = async ({ from }) => {
 
   const apps = await appsPromise();
+  console.log(apps);
+  
 
   //   const apps = use(appsPromise);
   //   console.log(apps, "apps");
@@ -48,7 +50,7 @@ const TrendingApps = async ({from}) => {
       {/* </div> */}
       {/* ) : ( */}
       <div className="grid grid-cols-3 gap-5">
-        {apps.slice(0, 9).map((app, ind) => {
+        {apps.slice(0, from === "homepage" ? 9 : apps.length).map((app, ind) => {
           return <AppCard app={app} key={ind} />;
         })}
       </div>
