@@ -1,7 +1,13 @@
+import Banner from "@/components/homepage/Banner";
+import Stats from "@/components/homepage/Stats";
 import Image from "next/image";
+import { DiVim } from "react-icons/di";
 
 export default function Home() {
   return (
-    <h2 className="bg bg-red-500">Welcome to the Home Page</h2>
+    <div>
+      <Banner/>
+      <Stats/>
+    </div>
   );
 }
