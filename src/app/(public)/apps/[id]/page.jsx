@@ -4,18 +4,30 @@ import Link from 'next/link';
 import React from 'react';
 import { FaBuilding, FaDownload, FaStar } from 'react-icons/fa';
 
+
 const appsPromise = async () => {
     const res = await fetch("http://localhost:3000/data.json");
     const data = await res.json();
     return data;
 }
 
+export async function generateMetadata({ params}){
+    const {id} = await params;
+    const apps = await appsPromise();
+    const app = apps.find(app => app.id === Number(id));
+    return{
+        title: `${app.title} | PH Play Store`,
+        description: app.description,
+    }
+}    
+
+
 const AppDetailsPage = async ({ params }) => {
     const apps = await appsPromise();
     const { id } = await params;
     const app = apps.find(app => app.id === Number(id));
-    console.log(id, 'params');
-    console.log(app);
+    // console.log(id, 'params');
+    // console.log(app);
     const totalRatings = app.ratings.reduce((sum,item) => sum + item.count, 0);
 
     return (
@@ -75,7 +87,7 @@ const AppDetailsPage = async ({ params }) => {
 
                         <div className="flex flex-wrap gap-3">
                             {/* <InstallToggleButton app={app} /> */}
-                            <InstallToggleButton/>
+                            <InstallToggleButton app={app}/>
                             <Link href="/apps" className="btn btn-ghost btn-lg">
                                 Back to apps
                             </Link>
