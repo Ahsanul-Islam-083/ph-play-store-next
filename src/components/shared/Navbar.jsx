@@ -17,7 +17,7 @@ const Navbar = () => {
       text: "Apps",
     },
     {
-      path: "/installedApps",
+      path: "/installation",
       text: "Installation",
     },
     {
@@ -29,7 +29,9 @@ const Navbar = () => {
   return (
     <nav className=" shadow">
       <div className="flex justify-between gap-4 items-center  py-2 container mx-auto">
-        <Image src={logoImg} alt="PH Play Store" width={50} height={50} />
+        {/* <Image src={logoImg} alt="PH Play Store" width={50} height={50} /> */}
+        <Image src={"https://png.pngtree.com/png-clipart/20190611/original/pngtree-wolf-logo-png-image_2306634.jpg"} alt="PH Play Store" width={50} height={50} />
+        <Image src={"https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?semt=ais_hybrid&w=740&q=80"} alt="PH Play Store" width={50} height={50} />
         <ul className="flex justify-between gap-2 items-center">
           {navItems.map((item, index) => (
             <Link key={index} href={item.path}>
