@@ -7,7 +7,7 @@ import { FaBuilding, FaDownload, FaStar } from 'react-icons/fa';
 
 
 const appsPromise = async () => {
-    const res = await fetch("http://localhost:3000/data.json");
+    const res = await fetch("https://ph-play-store-next-peach.vercel.app/data.json");
     const data = await res.json();
     return data;
 }
