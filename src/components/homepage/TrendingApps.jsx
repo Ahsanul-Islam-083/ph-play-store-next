@@ -10,7 +10,7 @@ import Link from "next/link";
 
 // const appsPromise = fetch("/data.json").then((res) => res.json());
 const appsPromise = async () => {
-  const res = await fetch("https://ph-play-store-next-j6bts0s0f-ahsanulislam083-4831s-projects.vercel.app/data.json",{
+  const res = await fetch("https://ph-play-store-next-peach.vercel.app/data.json",{
     cache: "no-store",
   });
   const data = await res.json();
